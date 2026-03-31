@@ -114,6 +114,7 @@
   .logo-emblem {
     width: 44px;
     height: 44px;
+    object-fit: contain;
   }
 
   .logo-text {
@@ -427,6 +428,7 @@
     width: 340px;
     height: 340px;
     opacity: 0.15;
+    object-fit: contain;
   }
 
   /* ─── URGENCE BAND ─── */
@@ -1191,24 +1193,7 @@
 <!-- NAVBAR -->
 <nav>
   <a href="#" class="nav-logo">
-    <svg class="logo-emblem" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <circle cx="22" cy="22" r="21" stroke="#1A2B4A" stroke-width="1.5"/>
-      <circle cx="22" cy="22" r="17" stroke="#2155A3" stroke-width="0.8" stroke-dasharray="3 3"/>
-      <g transform="translate(22,22) rotate(-40) translate(-22,-22)">
-        <rect x="10" y="20.5" width="24" height="3" rx="1.5" fill="#2155A3"/>
-        <rect x="8" y="18" width="5" height="8" rx="1" fill="#1A2B4A"/>
-        <rect x="31" y="18" width="5" height="8" rx="1" fill="#1A2B4A"/>
-        <circle cx="10.5" cy="22" r="2.5" fill="#2155A3"/>
-        <circle cx="33.5" cy="22" r="2.5" fill="#2155A3"/>
-      </g>
-      <g transform="translate(22,22) rotate(40) translate(-22,-22)">
-        <rect x="10" y="20.5" width="24" height="3" rx="1.5" fill="#1A2B4A"/>
-        <rect x="8" y="18" width="5" height="8" rx="1" fill="#2155A3"/>
-        <rect x="31" y="18" width="5" height="8" rx="1" fill="#2155A3"/>
-        <circle cx="10.5" cy="22" r="2.5" fill="#1A2B4A"/>
-        <circle cx="33.5" cy="22" r="2.5" fill="#1A2B4A"/>
-      </g>
-    </svg>
+    <img src="logo.svg" alt="Val Plomberie" class="logo-emblem">
     <div class="logo-text">
       <span class="name">Val Plomberie</span>
       <span class="tagline">Plombier & Chauffagiste</span>
@@ -1262,21 +1247,7 @@
       </div>
     </div>
     <div class="hero-visual">
-      <svg class="hero-emblem-large" viewBox="0 0 300 300" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="150" cy="150" r="145" stroke="white" stroke-width="3"/>
-        <circle cx="150" cy="150" r="125" stroke="white" stroke-width="1" stroke-dasharray="8 8"/>
-        <g transform="translate(150,150) rotate(-40) translate(-150,-150)">
-          <rect x="60" y="145" width="180" height="20" rx="10" fill="white"/>
-          <rect x="48" y="128" width="40" height="44" rx="6" fill="white"/>
-          <rect x="212" y="128" width="40" height="44" rx="6" fill="white"/>
-        </g>
-        <g transform="translate(150,150) rotate(40) translate(-150,-150)">
-          <rect x="60" y="145" width="180" height="20" rx="10" fill="white"/>
-          <rect x="48" y="128" width="40" height="44" rx="6" fill="white"/>
-          <rect x="212" y="128" width="40" height="44" rx="6" fill="white"/>
-        </g>
-        <text x="150" y="240" text-anchor="middle" fill="white" font-family="serif" font-size="16" letter-spacing="8" opacity="0.6">VAL PLOMBERIE</text>
-      </svg>
+      <img src="logo.svg" alt="Val Plomberie" class="hero-emblem-large">
     </div>
   </div>
 </section>
@@ -1759,6 +1730,18 @@ document.querySelectorAll('.service-card, .avis-card, .valeur-item, .step-item')
   el.style.transform = 'translateY(20px)';
   el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
   observer.observe(el);
+});
+
+// Header scroll effect
+window.addEventListener('scroll', () => {
+  const nav = document.querySelector('nav');
+  if (window.scrollY > 50) {
+    nav.style.background = 'white';
+    nav.style.boxShadow = '0 2px 20px rgba(0,0,0,0.1)';
+  } else {
+    nav.style.background = 'rgba(255,255,255,0.97)';
+    nav.style.boxShadow = 'none';
+  }
 });
 </script>
 </body>
