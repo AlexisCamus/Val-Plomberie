@@ -173,14 +173,93 @@
     gap: 5px;
     cursor: pointer;
     padding: 4px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
   }
+
+  .hamburger:hover { background: rgba(33, 85, 163, 0.1); }
 
   .hamburger span {
     width: 26px;
     height: 2px;
     background: var(--gris-fonce);
     border-radius: 2px;
-    transition: 0.3s;
+    transition: all 0.3s ease;
+    transform-origin: center;
+  }
+
+  .hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translate(6px, 6px);
+  }
+
+  .hamburger.active span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -6px);
+  }
+
+  /* Mobile Menu Styles */
+  .nav-links.mobile-menu-open {
+    display: flex !important;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: white;
+    border-top: 1px solid var(--gris-border);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    z-index: 1000;
+    animation: slideDown 0.3s ease-out;
+  }
+
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .nav-links.mobile-menu-open li {
+    width: 100%;
+    border-bottom: 1px solid var(--gris-border);
+  }
+
+  .nav-links.mobile-menu-open li:last-child {
+    border-bottom: none;
+  }
+
+  .nav-links.mobile-menu-open a {
+    display: block;
+    padding: 16px 20px;
+    color: var(--gris-fonce);
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.2s ease;
+  }
+
+  .nav-links.mobile-menu-open a:hover {
+    background: var(--gris-clair);
+    color: var(--bleu-principal);
+  }
+
+  .nav-links.mobile-menu-open .nav-phone {
+    background: var(--bleu-principal);
+    color: white;
+    margin: 8px 20px 16px;
+    border-radius: 8px;
+    font-weight: 700;
+  }
+
+  .nav-links.mobile-menu-open .nav-phone:hover {
+    background: var(--bleu-nuit);
+    color: white;
   }
 
   /* ─── HERO ─── */
@@ -998,21 +1077,43 @@
 
   /* ─── MOBILE ─── */
   @media (max-width: 768px) {
-    nav { padding: 0 4%; }
-    .nav-links { display: none; }
-    .hamburger { display: flex; }
+    nav {
+      padding: 0 16px;
+      position: relative;
+    }
+
+    .nav-links {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: white;
+      flex-direction: column;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    }
+
+    .hamburger {
+      display: flex;
+    }
 
     .hero-content {
       grid-template-columns: 1fr;
-      padding: 60px 4% 80px;
+      padding: 60px 16px 80px;
       text-align: center;
+    }
+
+    .hero h1 {
+      font-size: clamp(2rem, 6vw, 3rem);
     }
 
     .hero-visual { display: none; }
     .hero-actions { justify-content: center; }
     .hero-stats { justify-content: center; }
 
-    section { padding: 60px 4%; }
+    section {
+      padding: 60px 16px;
+    }
 
     .intervention-inner,
     .apropos-inner,
@@ -1026,15 +1127,53 @@
       gap: 36px;
     }
 
+    .footer-bottom {
+      flex-direction: column;
+      gap: 12px;
+      text-align: center;
+    }
+
+    .footer-bottom > div {
+      justify-content: center;
+    }
+
     .form-row { grid-template-columns: 1fr; }
 
     .contact-form { padding: 28px 24px; }
 
-    .sticky-cta { bottom: 16px; right: 16px; }
+    .sticky-cta {
+      bottom: 16px;
+      right: 16px;
+    }
+
     .sticky-phone span { display: none; }
     .sticky-phone { padding: 14px 16px; border-radius: 50px; }
 
     .urgence-band { text-align: center; }
+
+    /* Services grid responsive */
+    .services-grid {
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+
+    .service-card {
+      padding: 28px 24px;
+    }
+
+    /* Avis grid responsive */
+    .avis-grid {
+      grid-template-columns: 1fr;
+    }
+
+    /* Contact cards responsive */
+    .contact-infos {
+      gap: 16px;
+    }
+
+    .contact-card {
+      padding: 18px 20px;
+    }
   }
 </style>
 </head>
@@ -1414,7 +1553,6 @@
         <p class="role">Plombier & Chauffagiste · Gargenville</p>
         <p>Installé à Gargenville depuis plusieurs années, je suis plombier et chauffagiste qualifié. Mon objectif : intervenir vite, bien faire les choses, et que vous soyez pleinement satisfait.</p>
         <div class="certification-badges">
-          <span class="badge">RGE qualifié</span>
           <span class="badge">Yvelines (78)</span>
           <span class="badge">Artisan indépendant</span>
           <span class="badge">Devis gratuit</span>
@@ -1578,15 +1716,33 @@
 <script>
 function toggleMenu() {
   const nav = document.querySelector('.nav-links');
-  if (nav.style.display === 'flex') {
-    nav.style.display = 'none';
-  } else {
-    nav.style.cssText = 'display:flex;flex-direction:column;position:absolute;top:68px;left:0;right:0;background:white;padding:20px 5%;border-bottom:1px solid #E2E8F0;z-index:99;gap:0;';
-    nav.querySelectorAll('a').forEach(a => {
-      a.style.cssText = 'padding:14px 0;border-bottom:1px solid #F4F6FA;font-size:1rem;';
-    });
-  }
+  const hamburger = document.querySelector('.hamburger');
+
+  nav.classList.toggle('mobile-menu-open');
+  hamburger.classList.toggle('active');
 }
+
+// Fermer le menu mobile lors du clic sur un lien
+document.querySelectorAll('.nav-links a').forEach(link => {
+  link.addEventListener('click', () => {
+    const nav = document.querySelector('.nav-links');
+    const hamburger = document.querySelector('.hamburger');
+
+    nav.classList.remove('mobile-menu-open');
+    hamburger.classList.remove('active');
+  });
+});
+
+// Fermer le menu mobile lors du clic en dehors
+document.addEventListener('click', (e) => {
+  const nav = document.querySelector('.nav-links');
+  const hamburger = document.querySelector('.hamburger');
+
+  if (!nav.contains(e.target) && !hamburger.contains(e.target)) {
+    nav.classList.remove('mobile-menu-open');
+    hamburger.classList.remove('active');
+  }
+});
 
 // Smooth entrance animations
 const observer = new IntersectionObserver((entries) => {
