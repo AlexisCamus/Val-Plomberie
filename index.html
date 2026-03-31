@@ -1584,50 +1584,60 @@
       <h3>Demander un devis</h3>
       <p class="form-desc">Décrivez votre besoin, on vous répond rapidement.</p>
 
-      <div class="form-row">
-        <div class="form-group">
-          <label>Prénom *</label>
-          <input type="text" placeholder="Jean">
+      <form action="https://formsubmit.co/contact@val-plomberie.com" method="POST">
+        <div class="form-row">
+          <div class="form-group">
+            <label>Prénom *</label>
+            <input type="text" name="prenom" placeholder="Jean" required>
+          </div>
+          <div class="form-group">
+            <label>Nom *</label>
+            <input type="text" name="nom" placeholder="Dupont" required>
+          </div>
         </div>
-        <div class="form-group">
-          <label>Nom *</label>
-          <input type="text" placeholder="Dupont">
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>Téléphone *</label>
+            <input type="tel" name="telephone" placeholder="06 00 00 00 00" required>
+          </div>
+          <div class="form-group">
+            <label>Ville *</label>
+            <input type="text" name="ville" placeholder="Gargenville" required>
+          </div>
         </div>
-      </div>
 
-      <div class="form-row">
         <div class="form-group">
-          <label>Téléphone *</label>
-          <input type="tel" placeholder="06 00 00 00 00">
+          <label>Email *</label>
+          <input type="email" name="email" placeholder="votre@email.com" required>
         </div>
+
         <div class="form-group">
-          <label>Ville *</label>
-          <input type="text" placeholder="Gargenville">
+          <label>Type d'intervention</label>
+          <select name="intervention">
+            <option value="">Choisissez un service</option>
+            <option>Dépannage urgent</option>
+            <option>Plomberie</option>
+            <option>Chauffage</option>
+            <option>Neuf & Rénovation</option>
+            <option>Traitement de l'eau</option>
+            <option>Autre</option>
+          </select>
         </div>
-      </div>
 
-      <div class="form-group">
-        <label>Type d'intervention</label>
-        <select>
-          <option value="">Choisissez un service</option>
-          <option>Dépannage urgent</option>
-          <option>Plomberie</option>
-          <option>Chauffage</option>
-          <option>Neuf & Rénovation</option>
-          <option>Traitement de l'eau</option>
-          <option>Autre</option>
-        </select>
-      </div>
+        <div class="form-group">
+          <label>Décrivez votre besoin</label>
+          <textarea name="besoin" placeholder="Expliquez brièvement votre situation..."></textarea>
+        </div>
 
-      <div class="form-group">
-        <label>Décrivez votre besoin</label>
-        <textarea placeholder="Expliquez brièvement votre situation..."></textarea>
-      </div>
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_next" value="https://yourdomain.com/success.html">
 
-      <button class="btn-submit" onclick="alert('Merci pour votre message ! Nous vous recontactons rapidement.')">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
-        Envoyer ma demande
-      </button>
+        <button type="submit" class="btn-submit">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+          Envoyer ma demande
+        </button>
+      </form>
     </div>
   </div>
 </section>
