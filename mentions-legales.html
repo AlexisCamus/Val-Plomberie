@@ -117,6 +117,81 @@
     .legal-content { padding: 24px; }
     h1 { font-size: 2rem; }
   }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: var(--bleu-nuit);
+    color: rgba(255,255,255,0.6);
+    padding: 60px 5% 30px;
+    margin-top: 60px;
+  }
+
+  .footer-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .footer-top {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 60px;
+    padding-bottom: 48px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    margin-bottom: 30px;
+  }
+
+  .footer-brand .logo-text .name { color: white; font-size: 1.3rem; }
+  .footer-brand .logo-text .tagline { color: rgba(255,255,255,0.4); }
+
+  .footer-desc {
+    font-size: 0.85rem;
+    line-height: 1.7;
+    margin-top: 16px;
+    max-width: 300px;
+  }
+
+  .footer-col h4 {
+    color: white;
+    font-weight: 700;
+    font-size: 0.85rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 18px;
+  }
+
+  .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+
+  .footer-col ul a {
+    text-decoration: none;
+    color: rgba(255,255,255,0.55);
+    font-size: 0.85rem;
+    transition: color 0.2s;
+  }
+
+  .footer-col ul a:hover { color: white; }
+
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.78rem;
+    gap: 16px;
+  }
+
+  .footer-legal-link {
+    color: rgba(255,255,255,0.75);
+    text-decoration: underline;
+    cursor: pointer;
+    font-weight: 600;
+  }
+  .footer-legal-link:hover { color: white; }
+
+  @media (max-width: 768px) {
+    .footer-top {
+      grid-template-columns: 1fr;
+      gap: 36px;
+    }
+  }
 </style>
 </head>
 <body>
@@ -148,8 +223,8 @@
     <h2>Cartes professionnelles</h2>
     <p>Plombier, Chauffagiste</p>
 
-    <h2>Numéro de TVA intracommunautaire</h2>
-    <p>Non assujetti</p>
+    <h2>Numéro de TVA</h2>
+    <p>FR17948169602</p>
 
     <h2>Activités</h2>
     <p>Plomberie, chauffage, dépannage, rénovation et traitement de l'eau</p>
@@ -172,6 +247,58 @@
     <p>Val Plomberie s'efforce de fournir des informations exactes et à jour. Cependant, des erreurs peuvent survenir. Nous ne pouvons être tenus responsables de l'utilisation faite de ces informations.</p>
   </div>
 </div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="nav-logo" style="display:flex;align-items:center;gap:12px;text-decoration:none;">
+          <svg width="40" height="40" viewBox="0 0 44 44" fill="none">
+            <circle cx="22" cy="22" r="21" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
+            <g transform="translate(22,22) rotate(-40) translate(-22,-22)">
+              <rect x="10" y="20.5" width="24" height="3" rx="1.5" fill="rgba(255,255,255,0.7)"/>
+              <rect x="8" y="18" width="5" height="8" rx="1" fill="white"/>
+              <rect x="31" y="18" width="5" height="8" rx="1" fill="white"/>
+            </g>
+            <g transform="translate(22,22) rotate(40) translate(-22,-22)">
+              <rect x="10" y="20.5" width="24" height="3" rx="1.5" fill="rgba(255,255,255,0.5)"/>
+              <rect x="8" y="18" width="5" height="8" rx="1" fill="rgba(255,255,255,0.7)"/>
+              <rect x="31" y="18" width="5" height="8" rx="1" fill="rgba(255,255,255,0.7)"/>
+            </g>
+          </svg>
+          <div class="logo-text">
+            <span class="name" style="color:white;font-size:1.2rem;font-family:'DM Serif Display',serif;">Val Plomberie</span>
+            <span class="tagline" style="color:rgba(255,255,255,0.4);font-size:0.65rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;">Plombier & Chauffagiste</span>
+          </div>
+        </div>
+        <p class="footer-desc">Artisan local de confiance à Gargenville et dans les Yvelines. Plomberie, chauffage, dépannage, rénovation et traitement de l'eau.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="index.html#services">Dépannage & Entretien</a></li>
+          <li><a href="index.html#services">Neuf & Rénovation</a></li>
+          <li><a href="index.html#services">Chauffage</a></li>
+          <li><a href="index.html#services">Traitement de l'eau</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="tel:0786710179">07 86 71 01 79</a></li>
+          <li><a href="mailto:contact@val-plomberie.com">contact@val-plomberie.com</a></li>
+          <li><a href="index.html#contact">78440 Gargenville</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Val Plomberie · Tous droits réservés</p>
+      <p>Gargenville · Yvelines · Île-de-France</p>
+      <span class="footer-legal-link" id="legal-link"><a href="mentions-legales.html" style="color: inherit; text-decoration: inherit;">Mentions légales</a></span>
+    </div>
+  </div>
+</footer>
 
 </body>
 </html>
