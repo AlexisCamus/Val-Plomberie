@@ -172,67 +172,37 @@
   .hamburger {
     display: none;
     flex-direction: column;
-    gap: 6px;
+    gap: 5px;
     cursor: pointer;
-    padding: 8px;
-    border-radius: 8px;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    background: transparent;
+    padding: 4px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
   }
 
-  .hamburger:hover {
-    background: rgba(33, 85, 163, 0.1);
-    transform: scale(1.05);
-  }
-
-  .hamburger:active {
-    transform: scale(0.95);
-  }
+  .hamburger:hover { background: rgba(33, 85, 163, 0.1); }
 
   .hamburger span {
-    width: 24px;
+    width: 26px;
     height: 2px;
     background: var(--gris-fonce);
     border-radius: 2px;
-    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    transition: all 0.3s ease;
     transform-origin: center;
   }
 
   .hamburger.active span:nth-child(1) {
-    transform: rotate(45deg) translate(5px, 5px);
-    background: var(--bleu-principal);
+    transform: rotate(45deg) translate(6px, 6px);
   }
 
   .hamburger.active span:nth-child(2) {
     opacity: 0;
-    transform: scaleX(0);
   }
 
   .hamburger.active span:nth-child(3) {
-    transform: rotate(-45deg) translate(7px, -6px);
-    background: var(--bleu-principal);
+    transform: rotate(-45deg) translate(6px, -6px);
   }
 
   /* Mobile Menu Styles */
-  .mobile-menu-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    background: rgba(26, 43, 74, 0.5);
-    backdrop-filter: blur(2px);
-    z-index: 999;
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.3s ease;
-  }
-
-  .mobile-menu-overlay.active {
-    opacity: 1;
-    visibility: visible;
-  }
-
   .nav-links.mobile-menu-open {
     display: flex !important;
     flex-direction: column;
@@ -240,26 +210,19 @@
     top: 68px;
     left: 0;
     right: 0;
-    background: linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(244,246,250,0.95) 100%);
-    backdrop-filter: blur(8px);
-    border-top: 1px solid rgba(226,232,240,0.8);
-    box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+    background: white;
+    border-top: 1px solid var(--gris-border);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
     z-index: 1000;
-    animation: slideDownModern 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    animation: slideDown 0.3s ease-out;
     max-height: calc(100vh - 68px);
     overflow-y: auto;
-    border-radius: 0 0 16px 16px;
-    /* Améliorer le rendu pour éviter le flou */
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    transform: translateZ(0);
-    backface-visibility: hidden;
   }
 
-  @keyframes slideDownModern {
+  @keyframes slideDown {
     from {
       opacity: 0;
-      transform: translateY(-20px);
+      transform: translateY(-10px);
     }
     to {
       opacity: 1;
@@ -269,26 +232,7 @@
 
   .nav-links.mobile-menu-open li {
     width: 100%;
-    border-bottom: 1px solid rgba(226,232,240,0.6);
-    animation: fadeInUp 0.3s ease forwards;
-    opacity: 0;
-  }
-
-  .nav-links.mobile-menu-open li:nth-child(1) { animation-delay: 0.1s; }
-  .nav-links.mobile-menu-open li:nth-child(2) { animation-delay: 0.15s; }
-  .nav-links.mobile-menu-open li:nth-child(3) { animation-delay: 0.2s; }
-  .nav-links.mobile-menu-open li:nth-child(4) { animation-delay: 0.25s; }
-  .nav-links.mobile-menu-open li:nth-child(5) { animation-delay: 0.3s; }
-
-  @keyframes fadeInUp {
-    from {
-      opacity: 0;
-      transform: translateY(10px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    border-bottom: 1px solid var(--gris-border);
   }
 
   .nav-links.mobile-menu-open li:last-child {
@@ -297,63 +241,29 @@
 
   .nav-links.mobile-menu-open a {
     display: block;
-    padding: 20px 24px;
+    padding: 16px 20px;
     color: var(--gris-fonce);
     text-decoration: none;
     font-weight: 500;
-    font-size: 1rem;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    position: relative;
-    border-radius: 8px;
-    margin: 4px 12px;
-    /* Améliorer le rendu du texte sur mobile */
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    transform: translateZ(0);
-  }
-
-  .nav-links.mobile-menu-open a::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 0;
-    height: 2px;
-    background: linear-gradient(90deg, var(--bleu-principal), var(--bleu-accent));
-    transition: width 0.3s ease;
-    border-radius: 1px;
+    transition: all 0.2s ease;
   }
 
   .nav-links.mobile-menu-open a:hover {
-    background: linear-gradient(135deg, rgba(33, 85, 163, 0.08) 0%, rgba(74, 143, 231, 0.08) 100%);
+    background: var(--gris-clair);
     color: var(--bleu-principal);
-    transform: translateX(4px);
-    box-shadow: 0 4px 12px rgba(33, 85, 163, 0.15);
-  }
-
-  .nav-links.mobile-menu-open a:hover::before {
-    width: 24px;
   }
 
   .nav-links.mobile-menu-open .nav-phone {
-    background: linear-gradient(135deg, var(--bleu-principal) 0%, var(--bleu-clair) 100%);
+    background: var(--bleu-principal);
     color: white;
-    margin: 16px 24px 20px;
-    border-radius: 12px;
+    margin: 8px 20px 16px;
+    border-radius: 8px;
     font-weight: 700;
-    font-size: 1rem;
-    padding: 16px 24px;
-    box-shadow: 0 4px 16px rgba(33, 85, 163, 0.3);
-    transition: all 0.3s ease;
-    text-align: center;
   }
 
   .nav-links.mobile-menu-open .nav-phone:hover {
-    background: linear-gradient(135deg, var(--bleu-nuit) 0%, var(--bleu-principal) 100%);
+    background: var(--bleu-nuit);
     color: white;
-    transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(33, 85, 163, 0.4);
   }
 
   /* ─── HERO ─── */
@@ -1180,18 +1090,6 @@
 
   /* ─── MOBILE ─── */
   @media (max-width: 768px) {
-    /* Optimisations pour éviter le flou sur mobile */
-    .nav-links.mobile-menu-open,
-    .nav-links.mobile-menu-open a,
-    .mobile-menu-overlay {
-      -webkit-transform: translateZ(0);
-      transform: translateZ(0);
-      -webkit-backface-visibility: hidden;
-      backface-visibility: hidden;
-      -webkit-perspective: 1000;
-      perspective: 1000;
-    }
-
     nav {
       padding: 0 16px;
       position: fixed;
@@ -1323,9 +1221,6 @@
     <span></span><span></span><span></span>
   </div>
 </nav>
-
-<!-- Mobile Menu Overlay -->
-<div class="mobile-menu-overlay" onclick="toggleMenu()"></div>
 
 <!-- HERO -->
 <section class="hero" id="accueil">
@@ -1804,18 +1699,9 @@
 function toggleMenu() {
   const nav = document.querySelector('.nav-links');
   const hamburger = document.querySelector('.hamburger');
-  const overlay = document.querySelector('.mobile-menu-overlay');
 
   nav.classList.toggle('mobile-menu-open');
   hamburger.classList.toggle('active');
-  overlay.classList.toggle('active');
-
-  // Prevent body scroll when menu is open
-  if (nav.classList.contains('mobile-menu-open')) {
-    document.body.style.overflow = 'hidden';
-  } else {
-    document.body.style.overflow = '';
-  }
 }
 
 // Fermer le menu mobile lors du clic sur un lien
@@ -1823,12 +1709,9 @@ document.querySelectorAll('.nav-links a').forEach(link => {
   link.addEventListener('click', () => {
     const nav = document.querySelector('.nav-links');
     const hamburger = document.querySelector('.hamburger');
-    const overlay = document.querySelector('.mobile-menu-overlay');
 
     nav.classList.remove('mobile-menu-open');
     hamburger.classList.remove('active');
-    overlay.classList.remove('active');
-    document.body.style.overflow = '';
   });
 });
 
@@ -1836,13 +1719,10 @@ document.querySelectorAll('.nav-links a').forEach(link => {
 document.addEventListener('click', (e) => {
   const nav = document.querySelector('.nav-links');
   const hamburger = document.querySelector('.hamburger');
-  const overlay = document.querySelector('.mobile-menu-overlay');
 
-  if (!nav.contains(e.target) && !hamburger.contains(e.target) && overlay.contains(e.target)) {
+  if (!nav.contains(e.target) && !hamburger.contains(e.target)) {
     nav.classList.remove('mobile-menu-open');
     hamburger.classList.remove('active');
-    overlay.classList.remove('active');
-    document.body.style.overflow = '';
   }
 });
 
