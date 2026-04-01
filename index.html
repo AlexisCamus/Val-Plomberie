@@ -220,8 +220,8 @@
     left: 0;
     width: 100%;
     height: 100vh;
-    background: rgba(26, 43, 74, 0.6);
-    backdrop-filter: blur(4px);
+    background: rgba(26, 43, 74, 0.5);
+    backdrop-filter: blur(2px);
     z-index: 999;
     opacity: 0;
     visibility: hidden;
@@ -240,8 +240,8 @@
     top: 68px;
     left: 0;
     right: 0;
-    background: linear-gradient(135deg, rgba(255,255,255,0.98) 0%, rgba(244,246,250,0.98) 100%);
-    backdrop-filter: blur(20px);
+    background: linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(244,246,250,0.95) 100%);
+    backdrop-filter: blur(8px);
     border-top: 1px solid rgba(226,232,240,0.8);
     box-shadow: 0 8px 32px rgba(0,0,0,0.12);
     z-index: 1000;
@@ -249,16 +249,21 @@
     max-height: calc(100vh - 68px);
     overflow-y: auto;
     border-radius: 0 0 16px 16px;
+    /* Améliorer le rendu pour éviter le flou */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    transform: translateZ(0);
+    backface-visibility: hidden;
   }
 
   @keyframes slideDownModern {
     from {
       opacity: 0;
-      transform: translateY(-20px) scale(0.95);
+      transform: translateY(-20px);
     }
     to {
       opacity: 1;
-      transform: translateY(0) scale(1);
+      transform: translateY(0);
     }
   }
 
@@ -301,6 +306,10 @@
     position: relative;
     border-radius: 8px;
     margin: 4px 12px;
+    /* Améliorer le rendu du texte sur mobile */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    transform: translateZ(0);
   }
 
   .nav-links.mobile-menu-open a::before {
@@ -1171,6 +1180,18 @@
 
   /* ─── MOBILE ─── */
   @media (max-width: 768px) {
+    /* Optimisations pour éviter le flou sur mobile */
+    .nav-links.mobile-menu-open,
+    .nav-links.mobile-menu-open a,
+    .mobile-menu-overlay {
+      -webkit-transform: translateZ(0);
+      transform: translateZ(0);
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+      -webkit-perspective: 1000;
+      perspective: 1000;
+    }
+
     nav {
       padding: 0 16px;
       position: fixed;
